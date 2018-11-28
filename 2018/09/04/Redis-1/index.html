@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Redis-1 | 雷音不响，春帷不揭</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Redis-1</h1><a id="logo" href="/.">雷音不响，春帷不揭</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Redis-1</h1><div class="post-meta">Sep 4, 2018</div><div class="post-content"><p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fuyky855v5j31e20q0akr.jpg" alt="Redis缓存"></p>
+<h4 id="主要数据类型"><a href="#主要数据类型" class="headerlink" title="主要数据类型"></a>主要数据类型</h4><ul>
+<li>String 数字、字符串等</li>
+<li>Hash 类似于字典</li>
+<li>List 根据索引访问</li>
+<li>Set 集合，不重复</li>
+<li>Sorted Set 有序集合</li>
+</ul>
+<h4 id="主要工作模式"><a href="#主要工作模式" class="headerlink" title="主要工作模式"></a>主要工作模式</h4><ul>
+<li>单节点实例，单一服务主机独立运行</li>
+<li>主从模式，有主服务节点和从服务节点。主节点崩溃，对整个系统会产品致命大家。从节点只可读，主可读可写（没记错的话）。</li>
+<li>sentinel模式，哨兵服务模式，当主节点崩溃时，可选举产生新的主节点。数据量较小（一台服务器）时使用</li>
+<li>cluster模式，服务于大数据量的情况。</li>
+</ul>
+<h4 id="过期策略和内存淘汰机制"><a href="#过期策略和内存淘汰机制" class="headerlink" title="过期策略和内存淘汰机制"></a>过期策略和内存淘汰机制</h4><ul>
+<li>定期删除</li>
+<li>懒惰删除</li>
+<li>各种淘汰机制，类似于操作系统学习时讲的内存操作</li>
+</ul>
+<h4 id="单线程的Redis为什么会快"><a href="#单线程的Redis为什么会快" class="headerlink" title="单线程的Redis为什么会快"></a>单线程的Redis为什么会快</h4><ul>
+<li>纯内存操作</li>
+<li>避免频繁的上下文切换</li>
+<li>采用非阻塞的I/o多路复用机制</li>
+</ul>
+<h4 id="优劣势"><a href="#优劣势" class="headerlink" title="优劣势"></a>优劣势</h4><p><strong>优势：</strong></p>
+<ol>
+<li>性能好。主要应用于有些特别费时的查询，而且其查询结果长时间不变。</li>
+<li>并发高。大并发情况下，多个请求同时访问数据库，可以使用缓存来改善这个问题。</li>
+</ol>
+<p><strong>劣势：</strong></p>
+<p>或者说是可能存在的问题</p>
+<ol>
+<li>缓存和数据库一致性的问题。有两种一致性，最终结果一致性和强一致性。要求最终结果一致性的问题，需要针对具体问题制定正确的更新策略，并采用合适的补偿措施。而有强一致性需求的数据，不能放缓存。</li>
+<li>缓存雪崩问题。缓存雪崩主要指，同一时间，缓存大面积失效，然后此时来了一大波请求，请求都直接访问数据库了。解决缓存雪崩问题，可采用 随机缓存失效策略，来避免缓存集体失效；使用互斥锁；双缓存机制。</li>
+<li>缓存击穿问题。黑客故意访问缓存中不存在的数据，导致所有的请求都访问数据库，进而导致数据库连接异常。可使用互斥锁、异步更新策略、判断请求是否有效的拦截机制。</li>
+<li>缓存的并发竞争问题。有多个子系统同时去设置一个key。可以使用事务机制来解决，但是有点鸡肋，事务机制仅适用于一个数据服务器上面来使用该方法，在生成场景下，数据多是做分片存储的。如果是不要求数据是有顺序的话，可以加上时间戳等，或者利用队列操作来避免多个子系统的竞争。</li>
+</ol>
+</div><div class="tags"></div><div class="post-nav"><a href="/2018/09/05/区块链-1/" class="pre">区块链-1</a><a href="/2018/09/04/消息队列-1/" class="next">消息队列-1</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/日清/" style="font-size: 15px;">日清</a> <a href="/tags/刷题/" style="font-size: 15px;">刷题</a> <a href="/tags/机器学习/" style="font-size: 15px;">机器学习</a> <a href="/tags/杂七杂八/" style="font-size: 15px;">杂七杂八</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/问题/" style="font-size: 15px;">问题</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/区块链/" style="font-size: 15px;">区块链</a> <a href="/tags/篮球/" style="font-size: 15px;">篮球</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a> <a href="/tags/培训/" style="font-size: 15px;">培训</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/07/antd设计思想/">antd设计思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/06/solr评分排序机制/">solr评分排序机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/pwa和https/">pwa和https</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/LeetCode84柱状图中最大的矩形/">LeetCode84柱状图中最大的矩形</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/29/ML18分类与回归的区别/">ML18分类与回归的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/28/还是那个济南/">还是那个济南</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/24/ML17分类聚类和回归/">ML17分类聚类和回归</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/23/LeetCode72编辑距离/">LeetCode72编辑距离</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/20/认真做好每件事/">认真做好每件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/17/LeetCode46全排列/">LeetCode46全排列</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">雷音不响，春帷不揭.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

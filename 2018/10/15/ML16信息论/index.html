@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>ML16信息论 | 雷音不响，春帷不揭</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">ML16信息论</h1><a id="logo" href="/.">雷音不响，春帷不揭</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">ML16信息论</h1><div class="post-meta">Oct 15, 2018</div><div class="post-content"><p>转载自GitHub：<a href="http://t.cn/E73win9" target="_blank" rel="noopener">http://t.cn/E73win9</a></p>
+<blockquote>
+<p>《深度学习》 3.13 信息论</p>
+<ul>
+<li>信息论的基本想法是：一件不太可能的事发生，要比一件非常可能的事发生，提供更多的信息。</li>
+<li>该想法可描述为以下性质：<ol>
+<li>非常可能发生的事件信息量要比较少，并且极端情况下，一定能够发生的事件应该没有信息量。</li>
+<li>比较不可能发生的事件具有更大的信息量。</li>
+<li>独立事件应具有增量的信息。例如，投掷的硬币两次正面朝上传递的信息量，应该是投掷一次硬币正面朝上的信息量的两倍。</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h3>信息熵 与 自信息</h3>
+
+<ul>
+<li><p><strong>自信息</strong>（self-information）是一种量化以上性质的函数，定义一个事件<code>x</code>的自信息为：</p>
+<p>  $I(x)=-\log P(x)$</p>
+<blockquote>
+<p>当该对数的底数为自然对数 e 时，单位为奈特（nats）；当以 2 为底数时，单位为比特（bit）或香农（shannons）</p>
+</blockquote>
+</li>
+<li><p>自信息只处理单个的输出。</p>
+</li>
+<li><p><strong>信息熵</strong>（Information-entropy）用于对整个概率分布中的<strong>不确定性总量</strong>进行量化：</p>
+<p>  $H(\mathrm{X})=\mathbb{E}<em>{\mathrm{X} \sim P}[I(x)]=-\sum</em>{x \in \mathrm{X}}P(x)\log P(x)$</p>
+<blockquote>
+<p>信息论中，记 <code>0log0 = 0</code></p>
+</blockquote>
+</li>
+</ul>
+<h3>交叉熵 与 相对熵/KL散度</h3>
+
+<ul>
+<li><p>定义 <strong>P 对 Q</strong> 的 <strong>KL 散度</strong>（Kullback-Leibler divergence）：</p>
+<p>  $D_P(Q)=\mathbb{E}<em>{\mathrm{X}\sim P}\left [ \log \frac{P(x)}{Q(x)} \right ]=\sum</em>{x \in \mathrm{X}}P(x)\left [ \log P(x)-\log Q(x) \right ]$</p>
+</li>
+</ul>
+<p><strong>KL 散度在信息论中度量的是哪个直观量？</strong></p>
+<ul>
+<li>在离散型变量的情况下， KL 散度衡量的是：当我们使用一种被设计成能够使得概率分布 Q 产生的消息的长度最小的编码，发送包含由概率分布 P 产生的符号的消息时，所需要的额外信息量。</li>
+</ul>
+<p><strong>KL散度的性质</strong>：</p>
+<ul>
+<li>非负；KL 散度为 0 当且仅当P 和 Q 在离散型变量的情况下是相同的分布，或者在连续型变量的情况下是“几乎处处”相同的</li>
+<li>不对称；D_p(q) != D_q(p)</li>
+</ul>
+<p><strong>交叉熵</strong>（cross-entropy）：</p>
+<p>$H_P(Q)=-\mathbb{E}<em>{\mathrm{X}\sim P}\log Q(x)=-\sum</em>{x \in \mathrm{X}}P(x)\log Q(x)$</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/haolexiao/article/details/70142571" target="_blank" rel="noopener">信息量，信息熵，交叉熵，KL散度和互信息（信息增益）</a> - CSDN博客</p>
+</blockquote>
+<p><strong>交叉熵 与 KL 散度的关系</strong></p>
+<ul>
+<li><p><strong>针对 Q 最小化交叉熵等价于最小化 P 对 Q 的 KL 散度</strong>，因为 Q 并不参与被省略的那一项。</p>
+<p>  $H_P(Q)=H(P)+D_P(Q)$</p>
+</li>
+<li><p>最大似然估计中，最小化 KL 散度其实就是在最小化分布之间的交叉熵。</p>
+<blockquote>
+<p>《深度学习》 ch5.5 - 最大似然估计</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="tags"><a href="/tags/机器学习/">机器学习</a></div><div class="post-nav"><a href="/2018/10/15/LeetCode42接雨水/" class="pre">LeetCode42接雨水</a><a href="/2018/10/13/ML15理解MLE-MAP-贝叶斯公式/" class="next">理解MLE-MAP-贝叶斯公式</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/生活/" style="font-size: 15px;">生活</a> <a href="/tags/日清/" style="font-size: 15px;">日清</a> <a href="/tags/刷题/" style="font-size: 15px;">刷题</a> <a href="/tags/机器学习/" style="font-size: 15px;">机器学习</a> <a href="/tags/杂七杂八/" style="font-size: 15px;">杂七杂八</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a> <a href="/tags/问题/" style="font-size: 15px;">问题</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/区块链/" style="font-size: 15px;">区块链</a> <a href="/tags/篮球/" style="font-size: 15px;">篮球</a> <a href="/tags/随想/" style="font-size: 15px;">随想</a> <a href="/tags/培训/" style="font-size: 15px;">培训</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/07/antd设计思想/">antd设计思想</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/06/solr评分排序机制/">solr评分排序机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/pwa和https/">pwa和https</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/31/LeetCode84柱状图中最大的矩形/">LeetCode84柱状图中最大的矩形</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/29/ML18分类与回归的区别/">ML18分类与回归的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/28/还是那个济南/">还是那个济南</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/24/ML17分类聚类和回归/">ML17分类聚类和回归</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/23/LeetCode72编辑距离/">LeetCode72编辑距离</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/20/认真做好每件事/">认真做好每件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/17/LeetCode46全排列/">LeetCode46全排列</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">雷音不响，春帷不揭.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
