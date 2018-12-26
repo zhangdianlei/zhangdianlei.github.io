@@ -104,28 +104,25 @@
 
 
 
-  <meta name="description" content="题目描述：给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。  示例: 12输入：&amp;quot;23&amp;quot;输出：[&amp;quot;ad&amp;quot;, &amp;quot;ae&amp;quot;, &amp;quot;af&amp;quot;, &amp;quot;bd&amp;quot;, &amp;quot;be&amp;quot;, &amp;quot;bf&amp;quot;, &amp;">
-<meta name="keywords" content="回溯">
+  <meta name="description" content="题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 你可以假设数组中不存在重复元素。 示例 1: 12输入: [3,4,5,1,2]输出: 1 示例 2: 12输入: [4,5,6,7,0,1,2]输出: 0 解题思路这题的核心解题思路就是使用二分查找。  当得到一个">
+<meta name="keywords" content="二分查找">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode17电话号码的字母组合">
-<meta property="og:url" content="https://zhangdianlei.github.io/2018/09/25/LeetCode17电话号码的字母组合/index.html">
+<meta property="og:title" content="LeetCode153寻找旋转排序数组中的最小值">
+<meta property="og:url" content="https://zhangdianlei.github.io/2018/12/26/LeetCode153寻找旋转排序数组中的最小值/index.html">
 <meta property="og:site_name" content="雷音不响，春帷不揭">
-<meta property="og:description" content="题目描述：给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。  示例: 12输入：&amp;quot;23&amp;quot;输出：[&amp;quot;ad&amp;quot;, &amp;quot;ae&amp;quot;, &amp;quot;af&amp;quot;, &amp;quot;bd&amp;quot;, &amp;quot;be&amp;quot;, &amp;quot;bf&amp;quot;, &amp;">
+<meta property="og:description" content="题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 你可以假设数组中不存在重复元素。 示例 1: 12输入: [3,4,5,1,2]输出: 1 示例 2: 12输入: [4,5,6,7,0,1,2]输出: 0 解题思路这题的核心解题思路就是使用二分查找。  当得到一个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fvlwvm0kdcj30bk09iaca.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fvm62xn172j313e0gyq3y.jpg">
-<meta property="og:updated_time" content="2018-12-21T01:07:19.430Z">
+<meta property="og:updated_time" content="2018-12-26T09:25:26.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode17电话号码的字母组合">
-<meta name="twitter:description" content="题目描述：给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。  示例: 12输入：&amp;quot;23&amp;quot;输出：[&amp;quot;ad&amp;quot;, &amp;quot;ae&amp;quot;, &amp;quot;af&amp;quot;, &amp;quot;bd&amp;quot;, &amp;quot;be&amp;quot;, &amp;quot;bf&amp;quot;, &amp;">
-<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fvlwvm0kdcj30bk09iaca.jpg">
+<meta name="twitter:title" content="LeetCode153寻找旋转排序数组中的最小值">
+<meta name="twitter:description" content="题目描述假设按照升序排序的数组在预先未知的某个点上进行了旋转。 ( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。 请找出其中最小的元素。 你可以假设数组中不存在重复元素。 示例 1: 12输入: [3,4,5,1,2]输出: 1 示例 2: 12输入: [4,5,6,7,0,1,2]输出: 0 解题思路这题的核心解题思路就是使用二分查找。  当得到一个">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangdianlei.github.io/2018/09/25/LeetCode17电话号码的字母组合/">
+  <link rel="canonical" href="https://zhangdianlei.github.io/2018/12/26/LeetCode153寻找旋转排序数组中的最小值/">
 
 
 
@@ -135,7 +132,7 @@
   };
 </script>
 
-  <title>LeetCode17电话号码的字母组合 | 雷音不响，春帷不揭</title>
+  <title>LeetCode153寻找旋转排序数组中的最小值 | 雷音不响，春帷不揭</title>
   
 
 
@@ -350,7 +347,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangdianlei.github.io/2018/09/25/LeetCode17电话号码的字母组合/">
+    <link itemprop="mainEntityOfPage" href="https://zhangdianlei.github.io/2018/12/26/LeetCode153寻找旋转排序数组中的最小值/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangdianlei">
@@ -367,7 +364,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">LeetCode17电话号码的字母组合
+          <h2 class="post-title" itemprop="name headline">LeetCode153寻找旋转排序数组中的最小值
 
               
             
@@ -393,24 +390,12 @@
                 
               
 
-              <time title="创建时间：2018-09-25 17:23:44" itemprop="dateCreated datePublished" datetime="2018-09-25T17:23:44+08:00">2018-09-25</time>
+              <time title="创建时间：2018-12-26 17:16:07 / 修改时间：17:25:26" itemprop="dateCreated datePublished" datetime="2018-12-26T17:16:07+08:00">2018-12-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-21 09:07:19" itemprop="dateModified" datetime="2018-12-21T09:07:19+08:00">2018-12-21</time>
               
             
           </span>
@@ -442,9 +427,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/09/25/LeetCode17电话号码的字母组合/#comments" itemprop="discussionUrl">
+                <a href="/2018/12/26/LeetCode153寻找旋转排序数组中的最小值/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/25/LeetCode17电话号码的字母组合/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/26/LeetCode153寻找旋转排序数组中的最小值/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -472,20 +457,22 @@
       
 
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个仅包含数字 <code>2-9</code> 的字符串，返回所有它能表示的字母组合。</p>
-<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fvlwvm0kdcj30bk09iaca.jpg" width="300px" height="300px"></p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure>
-<p><strong>说明:</strong><br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
-<h3 id="解答思路："><a href="#解答思路：" class="headerlink" title="解答思路："></a>解答思路：</h3><p>读完题目之后，基本就能感觉出来这题需要使用回溯方法来做。</p>
-<p>回溯方法的关键就是找到回溯循环和临界条件。</p>
-<p>以数字23为例，来理解这个问题：</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fvm62xn172j313e0gyq3y.jpg"></p>
-<p>需要回溯的循环就是 每一层都循环遍历所表示的字符，然后外层需要遍历完所有的数字</p>
-<p>临界条件就是层数指针高于最大层数。</p>
-<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><p>使用Python3实现的code，GitHub地址为：<a href="https://github.com/zhangdianlei/LeetCode_python/blob/master/src/c17.py" target="_blank" rel="noopener">https://github.com/zhangdianlei/LeetCode_python/blob/master/src/c17.py</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">back</span><span class="params">(digits, str, index, result)</span>:</span></span><br><span class="line">    chars = [<span class="string">""</span>, <span class="string">""</span>, <span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>, <span class="string">"jkl"</span>, <span class="string">"mno"</span>, <span class="string">"pqrs"</span>, <span class="string">"tuv"</span>, <span class="string">"wxyz"</span>]</span><br><span class="line">    <span class="keyword">if</span> len(digits) == index:</span><br><span class="line">        result.append(str)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> chars[int(digits[index])]:</span><br><span class="line">        back(digits, str+item, index + <span class="number">1</span>, result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">letterCombinations</span><span class="params">(self, digits)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type digits: str</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        str = <span class="string">""</span></span><br><span class="line">        result = []</span><br><span class="line">        index = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(digits) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">        back(digits, str, index, result)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 <code>[0,1,2,4,5,6,7]</code> 可能变为 <code>[4,5,6,7,0,1,2]</code> )。</p>
+<p>请找出其中最小的元素。</p>
+<p>你可以假设数组中不存在重复元素。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,4,5,1,2]</span><br><span class="line">输出: 1</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [4,5,6,7,0,1,2]</span><br><span class="line">输出: 0</span><br></pre></td></tr></table></figure>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这题的核心解题思路就是使用二分查找。</p>
+<ol>
+<li>当得到一个输入数组时，首先比较其首字符与尾字符大小，当首大于尾的话，传入这个数组的最小值就是首字符的值。</li>
+<li>如果第一步中，首大于尾，则最小值可能在数组中间，使用二分查找，分别查找数组的两部分。</li>
+<li>返回这段数组的最小值</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>核心代码实现：<a href="https://github.com/zhangdianlei/LeetCode_python/commit/eaa57e6f542e8485d87a223c3b351c04ad7bf3ec" target="_blank" rel="noopener">GitHub地址</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(nums, init)</span>:</span></span><br><span class="line">    result = init</span><br><span class="line">    <span class="keyword">if</span> nums[<span class="number">0</span>] &lt;= nums[<span class="number">-1</span>]:</span><br><span class="line">        <span class="keyword">if</span> nums[<span class="number">0</span>] &lt;= result:</span><br><span class="line">            result = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        result = min(find(nums[<span class="number">0</span>:len(nums) // <span class="number">2</span>], result), find(nums[len(nums) // <span class="number">2</span>:], result), result)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> find(nums, <span class="number">999999999</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -513,7 +500,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
             <a href="/tags/刷题/" rel="tag"># 刷题</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -526,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/25/多线程问题/" rel="next" title="多线程问题">
-                <i class="fa fa-chevron-left"></i> 多线程问题
+              <a href="/2018/12/25/宝塔面板/" rel="next" title="宝塔面板">
+                <i class="fa fa-chevron-left"></i> 宝塔面板
               </a>
             
           </div>
@@ -535,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/27/ML07-梯度下降法/" rel="prev" title="ML07-梯度下降法">
-                ML07-梯度下降法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -790,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述："><span class="nav-number">1.</span> <span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解答思路："><span class="nav-number">2.</span> <span class="nav-text">解答思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码实现："><span class="nav-number">3.</span> <span class="nav-text">代码实现：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解题思路"><span class="nav-number">2.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li></ol></div>
             
 
           </div>
@@ -946,9 +933,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "https://zhangdianlei.github.io/2018/09/25/LeetCode17电话号码的字母组合/";
-        this.page.identifier = "2018/09/25/LeetCode17电话号码的字母组合/";
-        this.page.title = 'LeetCode17电话号码的字母组合';
+        this.page.url = "https://zhangdianlei.github.io/2018/12/26/LeetCode153寻找旋转排序数组中的最小值/";
+        this.page.identifier = "2018/12/26/LeetCode153寻找旋转排序数组中的最小值/";
+        this.page.title = 'LeetCode153寻找旋转排序数组中的最小值';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
