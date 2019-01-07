@@ -104,20 +104,27 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="雷音不响，春帷不揭">
-<meta property="og:url" content="https://zhangdianlei.github.io/tags/机器学习/index.html">
+  <meta name="description" content="关于树的结构，在此不多做说明。一般常见的树结构可为以下形式： 一般是操作的二叉树，下图非二叉树，删掉叶子节点D即可。  遍历方式对于树的遍历，一般分为：前序，中序， 后序，层次遍历。 前序：根节点 – 左子树 – 右子树 中序：左子树 – 根节点 – 右子树 后序：左子树 – 右子树 –  根节点 层次：按层次遍历 前中后序遍历，虽然名称不同，但是代码实现的基本方法是一样的。 遍历方法对于前中后序">
+<meta name="keywords" content="树的遍历">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树的遍历">
+<meta property="og:url" content="https://zhangdianlei.github.io/2019/01/07/树的遍历/index.html">
 <meta property="og:site_name" content="雷音不响，春帷不揭">
+<meta property="og:description" content="关于树的结构，在此不多做说明。一般常见的树结构可为以下形式： 一般是操作的二叉树，下图非二叉树，删掉叶子节点D即可。  遍历方式对于树的遍历，一般分为：前序，中序， 后序，层次遍历。 前序：根节点 – 左子树 – 右子树 中序：左子树 – 根节点 – 右子树 后序：左子树 – 右子树 –  根节点 层次：按层次遍历 前中后序遍历，虽然名称不同，但是代码实现的基本方法是一样的。 遍历方法对于前中后序">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fyxux5nyywj30nw0gct9u.jpg">
+<meta property="og:updated_time" content="2019-01-07T05:31:46.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="雷音不响，春帷不揭">
+<meta name="twitter:title" content="树的遍历">
+<meta name="twitter:description" content="关于树的结构，在此不多做说明。一般常见的树结构可为以下形式： 一般是操作的二叉树，下图非二叉树，删掉叶子节点D即可。  遍历方式对于树的遍历，一般分为：前序，中序， 后序，层次遍历。 前序：根节点 – 左子树 – 右子树 中序：左子树 – 根节点 – 右子树 后序：左子树 – 右子树 –  根节点 层次：按层次遍历 前中后序遍历，虽然名称不同，但是代码实现的基本方法是一样的。 遍历方法对于前中后序">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fyxux5nyywj30nw0gct9u.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zhangdianlei.github.io/tags/机器学习/">
+  <link rel="canonical" href="https://zhangdianlei.github.io/2019/01/07/树的遍历/">
 
 
 
@@ -127,7 +134,7 @@
   };
 </script>
 
-  <title>标签: 机器学习 | 雷音不响，春帷不揭</title>
+  <title>树的遍历 | 雷音不响，春帷不揭</title>
   
 
 
@@ -175,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -246,7 +253,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -322,320 +329,229 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>机器学习<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangdianlei.github.io/2019/01/07/树的遍历/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangdianlei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雷音不响，春帷不揭">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/29/ML18分类与回归的区别/" itemprop="url">
-              
-                <span itemprop="name">ML18分类与回归的区别</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">树的遍历
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-29T11:05:19+08:00" content="2018-10-29">
-          10-29
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-07 11:22:52 / 修改时间：13:31:46" itemprop="dateCreated datePublished" datetime="2019-01-07T11:22:52+08:00">2019-01-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/07/树的遍历/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/07/树的遍历/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/24/ML17分类聚类和回归/" itemprop="url">
-              
-                <span itemprop="name">ML17分类聚类和回归</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-24T20:11:57+08:00" content="2018-10-24">
-          10-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/15/ML16信息论/" itemprop="url">
-              
-                <span itemprop="name">ML16信息论</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-15T13:52:33+08:00" content="2018-10-15">
-          10-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/13/ML15理解MLE-MAP-贝叶斯公式/" itemprop="url">
-              
-                <span itemprop="name">理解MLE-MAP-贝叶斯公式</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-13T10:39:09+08:00" content="2018-10-13">
-          10-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/ML14先验概率与后验概率/" itemprop="url">
-              
-                <span itemprop="name">ML14先验概率与后验概率</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-12T14:46:14+08:00" content="2018-10-12">
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/ML13生成模型与判别模型/" itemprop="url">
-              
-                <span itemprop="name">ML13生成模型与判别模型</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-12T14:04:53+08:00" content="2018-10-12">
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/ML12偏差与方差/" itemprop="url">
-              
-                <span itemprop="name">偏差与方差</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-12T10:38:26+08:00" content="2018-10-12">
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/09/ML11-常用距离度量方法/" itemprop="url">
-              
-                <span itemprop="name">ML11-常用距离度量方法</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-09T19:34:53+08:00" content="2018-10-09">
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/09/ML10-层次聚类/" itemprop="url">
-              
-                <span itemprop="name">ML10-层次聚类</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-09T19:12:03+08:00" content="2018-10-09">
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/09/ML09-K均值聚类/" itemprop="url">
-              
-                <span itemprop="name">ML09-K均值聚类</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-10-09T18:56:19+08:00" content="2018-10-09">
-          10-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>关于树的结构，在此不多做说明。一般常见的树结构可为以下形式：</p>
+<p>一般是操作的二叉树，下图非二叉树，删掉叶子节点D即可。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fyxux5nyywj30nw0gct9u.jpg" width="500px"></p>
+<h3 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h3><p>对于树的遍历，一般分为：前序，中序， 后序，层次遍历。</p>
+<p>前序：根节点 – 左子树 – 右子树</p>
+<p>中序：左子树 – 根节点 – 右子树</p>
+<p>后序：左子树 – 右子树 –  根节点</p>
+<p>层次：按层次遍历</p>
+<p>前中后序遍历，虽然名称不同，但是代码实现的基本方法是一样的。</p>
+<h3 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h3><p>对于前中后序三种遍历方式，在遍历方法上面都可以使用<strong>递归</strong>的遍历方法。其主要区别就是在于访问的时间节点的不同。</p>
+<p>递归可以使用一个<strong>栈</strong>来模拟效果。使用一个栈来动态的保存所遍历过的路径上的元素。栈内元素是先进后出的，将之前遍历经过的节点放入到栈中。再获得栈内一个元素之后，按照当前是哪类遍历方法进行节点遍历，结束后，再弹出栈内元素，继续进行遍历。</p>
+<p>对于层次遍历。使用一个队列来保存之前遍历过的节点。队列元素是先进先出的，将遍历过之后的节点加入到队列中。</p>
+<h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>正常遍历时间复杂度是 <code>O(n)</code> ，空间复杂度是递归栈的大小 <code>O(logN)</code> 。如果想降低空间复杂度为 <code>O(1)</code> ，则需要使用Morris遍历方法，这个方法不需要为每个节点额外分配指针指向其前驱和后继节点，而是利用叶子节点中的右空指针指向中序遍历下的后继节点就可以了。节省需要用栈来记录前驱或者后继节点的额外空间，所以可以达到 <code>O(1)</code> 的空间复杂度。</p>
 
       
     </div>
 
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/04/动态规划/" rel="next" title="动态规划">
+                <i class="fa fa-chevron-left"></i> 动态规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/机器学习/page/2/">2</a><a class="extend next" rel="next" href="/tags/机器学习/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -658,8 +574,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -838,6 +763,22 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历方式"><span class="nav-number">1.</span> <span class="nav-text">遍历方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历方法"><span class="nav-number">2.</span> <span class="nav-text">遍历方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度"><span class="nav-number">3.</span> <span class="nav-text">复杂度</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -966,6 +907,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 
@@ -980,6 +925,23 @@
     <script id="dsq-count-scr" src="https://zhangdianlei.disqus.com/count.js" async></script>
   
 
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://zhangdianlei.github.io/2019/01/07/树的遍历/";
+        this.page.identifier = "2019/01/07/树的遍历/";
+        this.page.title = '树的遍历';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zhangdianlei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
   
 
 
