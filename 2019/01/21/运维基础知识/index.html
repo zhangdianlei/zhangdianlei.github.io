@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1、什么是运维？什么是游戏运维？ 1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常， 在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术 运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等 2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维 开发运维：是给应用运维开发运维工具和运维平台">
+<meta name="keywords" content="运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运维基础知识">
+<meta property="og:url" content="https://zhangdianlei.github.io/2019/01/21/运维基础知识/index.html">
+<meta property="og:site_name" content="雷音不响，春帷不揭">
+<meta property="og:description" content="1、什么是运维？什么是游戏运维？ 1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常， 在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术 运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等 2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维 开发运维：是给应用运维开发运维工具和运维平台">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-bf0e4134d4ff121db6f46a652b0d9d1c_hd.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-bedf9506489750e4ddd5aa513877e6e1_hd.jpg">
+<meta property="og:updated_time" content="2019-01-21T03:54:53.670Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运维基础知识">
+<meta name="twitter:description" content="1、什么是运维？什么是游戏运维？ 1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常， 在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术 运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等 2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维 开发运维：是给应用运维开发运维工具和运维平台">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-bf0e4134d4ff121db6f46a652b0d9d1c_hd.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zhangdianlei.github.io/2019/01/21/运维基础知识/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>运维基础知识 | 雷音不响，春帷不揭</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">雷音不响，春帷不揭</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangdianlei.github.io/2019/01/21/运维基础知识/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangdianlei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雷音不响，春帷不揭">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">运维基础知识
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-21 11:29:30 / 修改时间：11:54:53" itemprop="dateCreated datePublished" datetime="2019-01-21T11:29:30+08:00">2019-01-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/计算机基础/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/21/运维基础知识/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/21/运维基础知识/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1、什么是运维？什么是游戏运维？</strong></p>
+<p>1）运维是指大型组织已经建立好的网络软硬件的维护，就是要保证业务的上线与运作的正常，</p>
+<p>在他运转的过程中，对他进行维护，他集合了网络、系统、数据库、开发、安全、监控于一身的技术</p>
+<p>运维又包括很多种，有DBA运维、网站运维、虚拟化运维、监控运维、游戏运维等等</p>
+<p>2）游戏运维又有分工，分为开发运维、应用运维（业务运维）和系统运维</p>
+<p>开发运维：是给应用运维开发运维工具和运维平台的</p>
+<p>应用运维：是给业务上线、维护和做故障排除的，用开发运维开发出来的工具给业务上线、维护、做故障排查</p>
+<p>系统运维：是给应用运维提供业务上的基础设施，比如：系统、网络、监控、硬件等等</p>
+<p>总结：开发运维和系统运维给应用运维提供了“工具”和“基础设施”上的支撑，开发运维、应用运维和系统运维他们的工作是环环相扣的</p>
+<p><strong>2、在工作中，运维人员经常需要跟运营人员打交道，请问运营人员是做什么工作的？</strong></p>
+<p>游戏运营要做的一个事情除了协调工作以外</p>
+<p>还需要与各平台沟通，做好开服的时间、开服数、用户导量、活动等计划</p>
+<p>3<strong>、现在给你三百台服务器，你怎么对他们进行管理？</strong></p>
+<p>管理3百台服务器的方式：</p>
+<p>1）设定跳板机，使用统一账号登录，便于安全与登录的考量。</p>
+<p>2）使用salt、ansiable、puppet进行系统的统一调度与配置的统一管理。</p>
+<p>3）建立简单的服务器的系统、配置、应用的cmdb信息管理。便于查阅每台服务器上的各种信息记录。</p>
+<p><strong>4、简述raid0 raid1 raid5 三种工作模式的工作原理及特点</strong></p>
+<p>RAID，可以把硬盘整合成一个大磁盘，还可以在大磁盘上再分区，放数据</p>
+<p>还有一个大功能，多块盘放在一起可以有冗余（备份）</p>
+<p>RAID整合方式有很多，常用的：0 1 5 10</p>
+<p>RAID 0，可以是一块盘和N个盘组合</p>
+<p>其优点读写快，是RAID中最好的</p>
+<p>缺点：没有冗余，一块坏了数据就全没有了</p>
+<p>RAID 1，只能2块盘，盘的大小可以不一样，以小的为准</p>
+<p>10G+10G只有10G，另一个做备份。它有100%的冗余，缺点：浪费资源，成本高</p>
+<p>RAID 5 ，3块盘，容量计算10*（n-1）,损失一块盘</p>
+<p>特点，读写性能一般，读还好一点，写不好</p>
+<p>冗余从好到坏：RAID1 RAID10 RAID 5 RAID0</p>
+<p>性能从好到坏：RAID0 RAID10 RAID5 RAID1</p>
+<p>成本从低到高：RAID0 RAID5 RAID1 RAID10</p>
+<p>单台服务器：很重要盘不多，系统盘，RAID1</p>
+<p>数据库服务器：主库：RAID10 从库 RAID5\RAID0（为了维护成本，RAID10）</p>
+<p>WEB服务器，如果没有太多的数据的话，RAID5,RAID0（单盘）</p>
+<p>有多台，监控、应用服务器，RAID0 RAID5</p>
+<p>我们会根据数据的存储和访问的需求，去匹配对应的RAID级别</p>
+<p><strong>5、LVS、Nginx、HAproxy有什么区别？工作中你怎么选择？</strong></p>
+<p>LVS： 是基于四层的转发</p>
+<p>HAproxy： 是基于四层和七层的转发，是专业的代理服务器</p>
+<p>Nginx： 是WEB服务器，缓存服务器，又是反向代理服务器，可以做七层的转发</p>
+<p>区别： LVS由于是基于四层的转发所以只能做端口的转发而基于URL的、基于目录的这种转发LVS就做不了</p>
+<p>工作选择：</p>
+<p>HAproxy和Nginx由于可以做七层的转发，所以URL和目录的转发都可以做在很大并发量的时候我们就要选择LVS，像中小型公司的话并发量没那么大选择HAproxy或者Nginx足已，由于HAproxy由是专业的代理服务器配置简单，所以中小型企业推荐使用HAproxy</p>
+<p><strong>6、Squid、Varinsh和Nginx有什么区别，工作中你怎么选择？</strong></p>
+<p>Squid、Varinsh和Nginx都是代理服务器</p>
+<p><strong>什么是代理服务器：</strong></p>
+<p>能代替用户去访问公网，并且能把访问到的数据缓存到服务器本地，等用户下次再访问相同的资源的时候，代理服务器直接从本地回应给用户，当本地没有的时候，代替你去访问公网，我接收你的请求，我先在我自已的本地缓存找，如果我本地缓存有，我直接从我本地的缓存里回复你</p>
+<p>如果我在我本地没有找到你要访问的缓存的数据，那么代理服务器就会代替你去访问公网</p>
+<p><strong>区别：</strong></p>
+<p>1）Nginx本来是反向代理/web服务器，用了插件可以做做这个副业</p>
+<p>但是本身不支持特性挺多，只能缓存静态文件</p>
+<p>2）从这些功能上。varnish和squid是专业的cache服务，而nginx这些是第三方模块完成</p>
+<p>3）varnish本身的技术上优势要高于squid，它采用了可视化页面缓存技术</p>
+<p>在内存的利用上，Varnish比Squid具有优势，性能要比Squid高。</p>
+<p>还有强大的通过Varnish管理端口，可以使用正则表达式快速、批量地清除部分缓存</p>
+<p>它是内存缓存，速度一流，但是内存缓存也限制了其容量，缓存页面和图片一般是挺好的</p>
+<p>4）squid的优势在于完整的庞大的cache技术资料，和很多的应用生产环境</p>
+<p><strong>工作中选择：</strong></p>
+<p>要做cache服务的话，我们肯定是要选择专业的cache服务，优先选择squid或者varnish。</p>
+<p><strong>7、Tomcat和Resin有什么区别，工作中你怎么选择？</strong></p>
+<p>区别：Tomcat用户数多，可参考文档多，Resin用户数少，可考虑文档少</p>
+<p>最主要区别则是Tomcat是标准的java容器，不过性能方面比resin的要差一些</p>
+<p>但稳定性和java程序的兼容性，应该是比resin的要好</p>
+<p>工作中选择：现在大公司都是用resin，追求性能；而中小型公司都是用Tomcat，追求稳定和程序的兼容</p>
+<p><strong>8、什么是中间件？什么是jdk？</strong></p>
+<p>中间件介绍：</p>
+<p>中间件是一种独立的系统软件或服务程序，分布式应用软件借助这种软件在不同的技术之间共享资源</p>
+<p>中间件位于客户机/ 服务器的操作系统之上，管理计算机资源和网络通讯<br>是连接两个独立应用程序或独立系统的软件。相连接的系统，即使它们具有不同的接口</p>
+<p>但通过中间件相互之间仍能交换信息。执行中间件的一个关键途径是信息传递</p>
+<p>通过中间件，应用程序可以工作于多平台或OS环境。</p>
+<p>jdk：jdk是Java的开发工具包</p>
+<p>它是一种用于构建在 Java 平台上发布的应用程序、applet 和组件的开发环境</p>
+<p><strong>9、讲述一下Tomcat8005、8009、8080三个端口的含义？</strong></p>
+<p>8005==》 关闭时使用</p>
+<p>8009==》 为AJP端口，即容器使用，如Apache能通过AJP协议访问Tomcat的8009端口</p>
+<p>8080==》 一般应用使用</p>
+<p><strong>10、什么叫CDN？</strong></p>
+<p>- 即内容分发网络</p>
+<p>- 其目的是通过在现有的Internet中增加一层新的网络架构，将网站的内容发布到最接近用户的网络边缘，使用户可就近取得所需的内容，提高用户访问网站的速度</p>
+<p><strong>11、什么叫网站灰度发布？</strong></p>
+<p>灰度发布是指在黑与白之间，能够平滑过渡的一种发布方式</p>
+<p>AB test就是一种灰度发布方式，让一部用户继续用A，一部分用户开始用B</p>
+<p>如果用户对B没有什么反对意见，那么逐步扩大范围，把所有用户都迁移到B上面 来<br>灰度发布可以保证整体系统的稳定，在初始灰度的时候就可以发现、调整问题，以保证其影响度</p>
+<p><strong>12、简述DNS进行域名解析的过程？</strong></p>
+<p>用户要访问<a href="http://link.zhihu.com/?target=http%3A//www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a>，会先找本机的host文件，再找本地设置的DNS服务器，如果也没有的话，就去网络中找根服务器，根服务器反馈结果，说只能提供一级域名服务器.cn，就去找一级域名服务器，一级域名服务器说只能提供二级域名服务器.com.cn,就去找二级域名服务器，二级域服务器只能提供三级域名服务器.<a href="http://link.zhihu.com/?target=http%3A//baidu.com.cn" target="_blank" rel="noopener">http://baidu.com.cn</a>，就去找三级域名服务器，三级域名服务器正好有这个网站<a href="http://link.zhihu.com/?target=http%3A//www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a>，然后发给请求的服务器，保存一份之后，再发给客户端</p>
+<p><strong>13、RabbitMQ是什么东西？</strong></p>
+<p>RabbitMQ也就是消息队列中间件，消息中间件是在消息的传息过程中保存消息的容器<br>消息中间件再将消息从它的源中到它的目标中标时充当中间人的作用</p>
+<p>队列的主要目的是提供路由并保证消息的传递；如果发送消息时接收者不可用消息队列不会保留消息，直到可以成功地传递为止，当然，消息队列保存消息也是有期限地</p>
+<p><strong>14、讲一下Keepalived的工作原理？</strong></p>
+<p>在一个虚拟路由器中，只有作为MASTER的VRRP路由器会一直发送VRRP通告信息,<br>BACKUP不会抢占MASTER，除非它的优先级更高。当MASTER不可用时(BACKUP收不到通告信息)</p>
+<p>多台BACKUP中优先级最高的这台会被抢占为MASTER。这种抢占是非常快速的(&lt;1s)，以保证服务的连续性</p>
+<p>于安全性考虑，VRRP包使用了加密协议进行加密。BACKUP不会发送通告信息，只会接收通告信息</p>
+<p><strong>15、讲述一下LVS三种模式的工作过程？</strong><br>LVS 有三种负载均衡的模式，分别是VS/NAT（nat 模式） VS/DR(路由模式) VS/TUN（隧道模式）</p>
+<p>一、NAT模式（VS-NAT）</p>
+<p>原理：就是把客户端发来的数据包的IP头的目的地址，在负载均衡器上换成其中一台RS的IP地址</p>
+<p>并发至此RS来处理,RS处理完后把数据交给负载均衡器,负载均衡器再把数据包原IP地址改为自己的IP</p>
+<p>将目的地址改为客户端IP地址即可期间,无论是进来的流量,还是出去的流量,都必须经过负载均衡器</p>
+<p>优点：集群中的物理服务器可以使用任何支持TCP/IP操作系统，只有负载均衡器需要一个合法的IP地址</p>
+<p>缺点：扩展性有限。当服务器节点（普通PC服务器）增长过多时,负载均衡器将成为整个系统的瓶颈</p>
+<p>因为所有的请求包和应答包的流向都经过负载均衡器。当服务器节点过多时大量的数据包都交汇在负载均衡器那，速度就会变慢！</p>
+<p>二、IP隧道模式（VS-TUN）</p>
+<p>原理：首先要知道，互联网上的大多Internet服务的请求包很短小，而应答包通常很大</p>
+<p>那么隧道模式就是，把客户端发来的数据包，封装一个新的IP头标记(仅目的IP)发给RS</p>
+<p>RS收到后,先把数据包的头解开,还原数据包,处理后,直接返回给客户端,不需要再经过</p>
+<p>负载均衡器。注意,由于RS需要对负载均衡器发过来的数据包进行还原,所以说必须支持</p>
+<p>IPTUNNEL协议，所以,在RS的内核中,必须编译支持IPTUNNEL这个选项</p>
+<p>优点：负载均衡器只负责将请求包分发给后端节点服务器，而RS将应答包直接发给用户</p>
+<p>所以，减少了负载均衡器的大量数据流动，负载均衡器不再是系统的瓶颈，就能处理很巨大的请求量</p>
+<p>这种方式，一台负载均衡器能够为很多RS进行分发。而且跑在公网上就能进行不同地域的分发。</p>
+<p>缺点：隧道模式的RS节点需要合法IP，这种方式需要所有的服务器支持”IP Tunneling”</p>
+<p>(IP Encapsulation)协议，服务器可能只局限在部分Linux系统上</p>
+<p>三、直接路由模式（VS-DR）</p>
+<p>原理：负载均衡器和RS都使用同一个IP对外服务但只有DR对ARP请求进行响应</p>
+<p>所有RS对本身这个IP的ARP请求保持静默也就是说,网关会把对这个服务IP的请求全部定向给DR</p>
+<p>而DR收到数据包后根据调度算法,找出对应的RS,把目的MAC地址改为RS的MAC（因为IP一致）</p>
+<p>并将请求分发给这台RS这时RS收到这个数据包,处理完成之后，由于IP一致，可以直接将数据返给客户</p>
+<p>则等于直接从客户端收到这个数据包无异,处理后直接返回给客户端</p>
+<p>由于负载均衡器要对二层包头进行改换,所以负载均衡器和RS之间必须在一个广播域</p>
+<p>也可以简单的理解为在同一台交换机上</p>
+<p>优点：和TUN（隧道模式）一样，负载均衡器也只是分发请求，应答包通过单独的路由方法返回给客户端</p>
+<p>与VS-TUN相比，VS-DR这种实现方式不需要隧道结构，因此可以使用大多数操作系统做为物理服务器。</p>
+<p>缺点：（不能说缺点，只能说是不足）要求负载均衡器的网卡必须与物理网卡在一个物理段上。</p>
+<p><strong>16、mysql的innodb如何定位锁问题，mysql如何减少主从复制延迟？</strong></p>
+<p>mysql的innodb如何定位锁问题:<br>在使用 show engine innodb status检查引擎状态时，发现了死锁问题<br>在5.5中，information_schema 库中增加了三个关于锁的表（MEMORY引擎）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">innodb_trx         ## 当前运行的所有事务</span><br><span class="line">innodb_locks     ## 当前出现的锁</span><br><span class="line">innodb_lock_waits  ## 锁等待的对应关系</span><br></pre></td></tr></table></figure>
+<p>mysql如何减少主从复制延迟:</p>
+<p>如果延迟比较大，就先确认以下几个因素：</p>
+<p>\1. 从库硬件比主库差，导致复制延迟</p>
+<p>\2. 主从复制单线程，如果主库写并发太大，来不及传送到从库就会导致延迟。更高版本的mysql可以支持多线程复制</p>
+<p>\3. 慢SQL语句过多</p>
+<p>\4. 网络延迟</p>
+<p>\5. master负载</p>
+<p>主库读写压力大，导致复制延迟，架构的前端要加buffer及缓存层</p>
+<p>\6. slave负载</p>
+<p>一般的做法是，使用多台slave来分摊读请求，再从这些slave中取一台专用的服务器</p>
+<p>只作为备份用，不进行其他任何操作.另外， 2个可以减少延迟的参数:</p>
+<p>–slave-net-timeout=seconds 单位为秒 默认设置为 3600秒</p>
+<p>#参数含义：当slave从主数据库读取log数据失败后，等待多久重新建立连接并获取数据<br>–master-connect-retry=seconds 单位为秒 默认设置为 60秒</p>
+<p>#参数含义：当重新建立主从连接时，如果连接建立失败，间隔多久后重试</p>
+<p>通常配置以上2个参数可以减少网络问题导致的主从数据同步延迟</p>
+<p>MySQL数据库主从同步延迟解决方案</p>
+<p>最简单的减少slave同步延时的方案就是在架构上做优化，尽量让主库的DDL快速执行</p>
+<p>还有就是主库是写，对数据安全性较高，比如sync_binlog=1，innodb_flush_log_at_trx_commit<br>= 1 之类的设置，而slave则不需要这么高的数据安全，完全可以讲sync_binlog设置为0或者关闭binlog</p>
+<p>innodb_flushlog也可以设置为0来提高sql的执行效率。另外就是使用比主库更好的硬件设备作为slave</p>
+<p><strong>17、如何重置mysql root密码？</strong></p>
+<p>一、 在已知MYSQL数据库的ROOT用户密码的情况下，修改密码的方法：</p>
+<p>1、 在SHELL环境下，使用mysqladmin命令设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin –u root –p password “新密码”   回车后要求输入旧密码</span><br></pre></td></tr></table></figure>
+<p>2、 在mysql&gt;环境中,使用update命令，直接更新mysql库user表的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Update  mysql.user  set  password=password(‘新密码’)  where  user=’root’;</span><br><span class="line">flush   privileges;</span><br></pre></td></tr></table></figure>
+<p>注意：mysql语句要以分号”；”结束</p>
+<p>3、 在mysql&gt;环境中，使用grant命令，修改root用户的授权权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant  all  on  *.*  to   root@’localhost’  identified  by  ‘新密码’；</span><br></pre></td></tr></table></figure>
+<p>二、 如查忘记了mysql数据库的ROOT用户的密码，又如何做呢？方法如下：</p>
+<p>1、 关闭当前运行的mysqld服务程序：service mysqld stop（要先将mysqld添加为系统服务）</p>
+<p>2、 使用mysqld_safe脚本以安全模式（不加载授权表）启动mysqld 服务</p>
+<p>/usr/local/mysql/bin/mysqld_safe –skip-grant-table &amp;</p>
+<p>3、 使用空密码的root用户登录数据库，重新设置ROOT用户的密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">＃mysql  -u   root</span><br><span class="line">Mysql&gt; Update  mysql.user  set  password=password(‘新密码’)  where  user=’root’;</span><br><span class="line">Mysql&gt; flush   privileges;</span><br></pre></td></tr></table></figure>
+<p><strong>18、lvs/nginx/haproxy优缺点</strong></p>
+<p>Nginx的优点是：</p>
+<p>1、工作在网络的7层之上，可以针对http应用做一些分流的策略，比如针对域名、目录结构</p>
+<p>它的正则规则比HAProxy更为强大和灵活，这也是它目前广泛流行的主要原因之一</p>
+<p>Nginx单凭这点可利用的场合就远多于LVS了。</p>
+<p>2、Nginx对网络稳定性的依赖非常小，理论上能ping通就就能进行负载功能，这个也是它的优势之一</p>
+<p>相反LVS对网络稳定性依赖比较大，这点本人深有体会；</p>
+<p>3、Nginx安装和配置比较简单，测试起来比较方便，它基本能把错误用日志打印出来</p>
+<p>LVS的配置、测试就要花比较长的时间了，LVS对网络依赖比较大。</p>
+<p>4、可以承担高负载压力且稳定，在硬件不差的情况下一般能支撑几万次的并发量，负载度比LVS相对小些。</p>
+<p>5、Nginx可以通过端口检测到服务器内部的故障，比如根据服务器处理网页返回的状态码、超时等等，并且会把返回错误的请求重新提交到另一个节点，不过其中缺点就是不支持url来检测。比如用户正在上传一个文件，而处理该上传的节点刚好在上传过程中出现故障，Nginx会把上传切到另一台服务器重新处理，而LVS就直接断掉了</p>
+<p>如果是上传一个很大的文件或者很重要的文件的话，用户可能会因此而不满。</p>
+<p>6、Nginx不仅仅是一款优秀的负载均衡器/反向代理软件，它同时也是功能强大的Web应用服务器</p>
+<p>LNMP也是近几年非常流行的web架构，在高流量的环境中稳定性也很好。</p>
+<p>7、Nginx现在作为Web反向加速缓存越来越成熟了，速度比传统的Squid服务器更快，可考虑用其作为反向代理加速器</p>
+<p>8、Nginx可作为中层反向代理使用，这一层面Nginx基本上无对手，唯一可以对比Nginx的就只有lighttpd了</p>
+<p>不过lighttpd目前还没有做到Nginx完全的功能，配置也不那么清晰易读，社区资料也远远没Nginx活跃</p>
+<p>9、Nginx也可作为静态网页和图片服务器，这方面的性能也无对手。还有Nginx社区非常活跃，第三方模块也很多</p>
+<p>Nginx的缺点是：</p>
+<p>1、Nginx仅能支持http、https和Email协议，这样就在适用范围上面小些，这个是它的缺点</p>
+<p>2、对后端服务器的健康检查，只支持通过端口来检测，不支持通过url来检测</p>
+<p>不支持Session的直接保持，但能通过ip_hash来解决</p>
+<p>LVS：使用Linux内核集群实现一个高性能、高可用的负载均衡服务器</p>
+<p>它具有很好的可伸缩性（Scalability)、可靠性（Reliability)和可管理性（Manageability)</p>
+<p>LVS的优点是：</p>
+<p>1、抗负载能力强、是工作在网络4层之上仅作分发之用，没有流量的产生</p>
+<p>这个特点也决定了它在负载均衡软件里的性能最强的，对内存和cpu资源消耗比较低</p>
+<p>2、配置性比较低，这是一个缺点也是一个优点，因为没有可太多配置的东西</p>
+<p>所以并不需要太多接触，大大减少了人为出错的几率</p>
+<p>3、工作稳定，因为其本身抗负载能力很强，自身有完整的双机热备方案</p>
+<p>如LVS+Keepalived，不过我们在项目实施中用得最多的还是LVS/DR+Keepalived</p>
+<p>4、无流量，LVS只分发请求，而流量并不从它本身出去，这点保证了均衡器IO的性能不会收到大流量的影响。</p>
+<p>5、应用范围较广，因为LVS工作在4层，所以它几乎可对所有应用做负载均衡，包括http、数据库、在线聊天室等</p>
+<p>LVS的缺点是：</p>
+<p>1、软件本身不支持正则表达式处理，不能做动静分离</p>
+<p>而现在许多网站在这方面都有较强的需求，这个是Nginx/HAProxy+Keepalived的优势所在</p>
+<p>2、如果是网站应用比较庞大的话，LVS/DR+Keepalived实施起来就比较复杂了</p>
+<p>特别后面有Windows Server的机器的话，如果实施及配置还有维护过程就比较复杂了</p>
+<p>相对而言，Nginx/HAProxy+Keepalived就简单多了。</p>
+<p>HAProxy的特点是：</p>
+<p>1、HAProxy也是支持虚拟主机的。</p>
+<p>2、HAProxy的优点能够补充Nginx的一些缺点，比如支持Session的保持，Cookie的引导</p>
+<p>同时支持通过获取指定的url来检测后端服务器的状态</p>
+<p>3、HAProxy跟LVS类似，本身就只是一款负载均衡软件</p>
+<p>单纯从效率上来讲HAProxy会比Nginx有更出色的负载均衡速度，在并发处理上也是优于Nginx的</p>
+<p>4、HAProxy支持TCP协议的负载均衡转发，可以对MySQL读进行负载均衡</p>
+<p>对后端的MySQL节点进行检测和负载均衡，大家可以用LVS+Keepalived对MySQL主从做负载均衡</p>
+<p>5、HAProxy负载均衡策略非常多，HAProxy的负载均衡算法现在具体有如下8种：</p>
+<p>①roundrobin，表示简单的轮询，这个不多说，这个是负载均衡基本都具备的；</p>
+<p>② static-rr，表示根据权重，建议关注；</p>
+<p>③leastconn，表示最少连接者先处理，建议关注；</p>
+<p>④ source，表示根据请求源IP，这个跟Nginx的IP_hash机制类似</p>
+<p>我们用其作为解决session问题的一种方法，建议关注；</p>
+<p>⑤ri，表示根据请求的URI；</p>
+<p>⑥rl_param，表示根据请求的URl参数’balance url_param’ requires an URL parameter name；</p>
+<p>⑦hdr(name)，表示根据HTTP请求头来锁定每一次HTTP请求；</p>
+<p>⑧rdp-cookie(name)，表示根据据cookie(name)来锁定并哈希每一次TCP请求。</p>
+<p><strong>19、mysql数据备份工具</strong></p>
+<p><strong>mysqldump工具</strong></p>
+<p>mysqldump是mysql自带的备份工具，目录在bin目录下面：/usr/local/mysql/bin/mysqldump</p>
+<p>支持基于innodb的热备份，但是由于是逻辑备份，所以速度不是很快，适合备份数据比较小的场景</p>
+<p>Mysqldump完全备份+二进制日志可以实现基于时间点的恢复。</p>
+<p><strong>基于LVM快照备份</strong></p>
+<p>在物理备份中，有基于文件系统的物理备份（LVM的快照），也可以直接用tar之类的命令对整个数据库目录</p>
+<p>进行打包备份，但是这些只能进行泠备份，不同的存储引擎备份的也不一样，myisam自动备份到表级别</p>
+<p>而innodb不开启独立表空间的话只能备份整个数据库。</p>
+<p><strong>tar包备份</strong></p>
+<p>percona提供的xtrabackup工具</p>
+<p>支持innodb的物理热备份，支持完全备份，增量备份，而且速度非常快，支持innodb存储引起的数据在不同</p>
+<p>数据库之间迁移，支持复制模式下的从机备份恢复备份恢复，为了让xtrabackup支持更多的功能扩展</p>
+<p>可以设立独立表空间，打开 innodb_file_per_table功能，启用之后可以支持单独的表备份</p>
+<p><strong>20、keepalive的工作原理和如何做到健康检查</strong></p>
+<p>keepalived是以VRRP协议为实现基础的，VRRP全称Virtual Router Redundancy Protocol，即虚拟路由冗余协议。</p>
+<p>虚拟路由冗余协议，可以认为是实现路由器高可用的协议，即将N台提供相同功能的路由器组成一个路由器组</p>
+<p>这个组里面有一个master和多个backup，master上面有一个对外提供服务的vip（该路由器所在局域网内</p>
+<p>其他机器的默认路由为该vip），master会发组播，当backup收不到vrrp包时就认为master宕掉了</p>
+<p>这时就需要根据VRRP的优先级来选举一个backup当master。这样就可以保证路由器的高可用了</p>
+<p>keepalived主要有三个模块，分别是core、check和vrrp。core模块为keepalived的核心，负责主进程的启动、维护</p>
+<p>及全局配置文件的加载和解析。check负责健康检查，包括常见的各种检查方式，vrrp模块是来实现VRRP协议的</p>
+<p><strong>Keepalived健康检查方式配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP_GET|SSL_GET</span><br><span class="line">HTTP_GET | SSL_GET</span><br><span class="line">&#123;</span><br><span class="line">url &#123;</span><br><span class="line">path /# HTTP/SSL 检查的url可以是多个</span><br><span class="line">digest &lt;STRING&gt; # HTTP/SSL 检查后的摘要信息用工具genhash生成</span><br><span class="line">status_code 200# HTTP/SSL 检查返回的状态码</span><br><span class="line">&#125;</span><br><span class="line">connect_port 80 # 连接端口</span><br><span class="line">bindto&lt;IPADD&gt;</span><br><span class="line">connect_timeout 3 # 连接超时时间</span><br><span class="line">nb_get_retry 3 # 重连次数</span><br><span class="line">delay_before_retry 2 #连接间隔时间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>21、统计ip访问情况，要求分析nginx访问日志，找出访问页面数量在前十位的ip</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat access.log | awk &apos;&#123;print $1&#125;&apos; | uniq -c | sort -rn | head -10</span><br></pre></td></tr></table></figure>
+<p><strong>22、使用tcpdump监听主机为192.168.1.1，tcp端口为80的数据，同时将输出结果保存输出到tcpdump.log</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump &apos;host 192.168.1.1 and port 80&apos; &gt; tcpdump.log</span><br></pre></td></tr></table></figure>
+<p><strong>23、如何将本地80 端口的请求转发到8080 端口，当前主机IP 为192.168.2.1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A PREROUTING -d 192.168.2.1 -p tcp -m tcp -dport 80 -j DNAT-to-destination 192.168.2.1:8080</span><br></pre></td></tr></table></figure>
+<p><strong>24、简述raid0 raid1 raid5 三种工作模式的工作原理及特点</strong></p>
+<p><strong>RAID 0：</strong>带区卷，连续以位或字节为单位分割数据，并行读/写于多个磁盘上，因此具有很高的数据传输率</p>
+<p>但它没有数据冗余，RAID 0 只是单纯地提高性能，并没有为数据的可靠性提供保证</p>
+<p>而且其中的一个磁盘失效将影响到所有数据。因此，RAID 0 不能应用于数据安全性要求高的场合</p>
+<p><strong>RAID 1：</strong>镜像卷，它是通过磁盘数据镜像实现数据冗余，在成对的独立磁盘上产生互为备份的数据</p>
+<p>不能提升写数据效率。当原始数据繁忙时，可直接从镜像拷贝中读取数据，因此RAID1 可以提高读取性能</p>
+<p>RAID 1 是磁盘阵列中单位成本最高的，镜像卷可用容量为总容量的1/2，但提供了很高的数据安全性和可用性</p>
+<p>当一个磁盘失效时，系统可以自动切换到镜像磁盘上读写，而不需要重组失效的数据</p>
+<p><strong>RAID5：</strong>至少由3块硬盘组成，分布式奇偶校验的独立磁盘结构，它的奇偶校验码存在于所有磁盘上</p>
+<p>任何一个硬盘损坏，都可以根据其它硬盘上的校验位来重建损坏的数据（最多允许1块硬盘损坏）</p>
+<p>所以raid5可以实现数据冗余，确保数据的安全性，同时raid5也可以提升数据的读写性能</p>
+<p><strong>25、你对现在运维工程师的理解和以及对其工作的认识</strong></p>
+<p>运维工程师在公司当中责任重大，需要保证时刻为公司及客户提供最高、最快、最稳定、最安全的服务</p>
+<p>运维工程师的一个小小的失误，很有可能会对公司及客户造成重大损失</p>
+<p>因此运维工程师的工作需要严谨及富有创新精神</p>
+<p><strong>26、实时抓取并显示当前系统中tcp 80端口的网络数据信息，请写出完整操作命令</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -nn tcp port 80</span><br></pre></td></tr></table></figure>
+<p><strong>27、服务器开不了机怎么解决一步步的排查</strong></p>
+<p>A、造成服务器故障的原因可能有以下几点：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-bf0e4134d4ff121db6f46a652b0d9d1c_hd.jpg" alt="img"></p>
+<p>B、如何排查服务器故障的处理步骤如下：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-bedf9506489750e4ddd5aa513877e6e1_hd.jpg" alt="img"></p>
+<p><strong>28、Linux系统中病毒怎么解决</strong></p>
+<p>1）最简单有效的方法就是重装系统</p>
+<p>2）要查的话就是找到病毒文件然后删除</p>
+<p>中毒之后一般机器cpu、内存使用率会比较高</p>
+<p>机器向外发包等异常情况，排查方法简单介绍下</p>
+<p>top 命令找到cpu使用率最高的进程</p>
+<p>一般病毒文件命名都比较乱，可以用 ps aux 找到病毒文件位置</p>
+<p>rm -f 命令删除病毒文件</p>
+<p>检查计划任务、开机启动项和病毒文件目录有无其他可以文件等</p>
+<p>3）由于即使删除病毒文件不排除有潜伏病毒，所以最好是把机器备份数据之后重装一下</p>
+<p><strong>29、发现一个病毒文件你删了他又自动创建怎么解决</strong></p>
+<p>公司的内网某台linux服务器流量莫名其妙的剧增,用iftop查看有连接外网的情况</p>
+<p>针对这种情况一般重点查看netstat连接的外网ip和端口。</p>
+<p>用lsof -p pid可以查看到具体是那些进程，哪些文件</p>
+<p>经查勘发现/root下有相关的配置conf.n hhe两个可疑文件，rm -rf后不到一分钟就自动生成了</p>
+<p>由此推断是某个母进程产生的这些文件。所以找到母进程就是找到罪魁祸首</p>
+<p>查杀病毒最好断掉外网访问，还好是内网服务器，可以通过内网访问</p>
+<p>断了内网，病毒就失去外联的能力，杀掉它就容易的多</p>
+<p>怎么找到呢，找了半天也没有看到蛛丝马迹，没办法只有ps axu一个个排查</p>
+<p>方法是查看可以的用户和和系统相似而又不是的冒牌货，果然，看到了如下进程可疑</p>
+<p>看不到图片就是/usr/bin/.sshd</p>
+<p>于是我杀掉所有.sshd相关的进程，然后直接删掉.sshd这个可执行文件</p>
+<p>然后才删掉了文章开头提到的自动复活的文件</p>
+<p>总结一下，遇到这种问题，如果不是太严重，尽量不要重装系统</p>
+<p>一般就是先断外网，然后利用iftop,ps,netstat,chattr,lsof,pstree这些工具顺藤摸瓜</p>
+<p>一般都能找到元凶。但是如果遇到诸如此类的问题</p>
+<p>/boot/efi/EFI/redhat/grub.efi: Heuristics.Broken.Executable FOUND，个人觉得就要重装系统了</p>
+<p><strong>30、说说TCP/IP的七层模型</strong></p>
+<p><strong>应用层 (Application)：</strong></p>
+<p>网络服务与最终用户的一个接口。</p>
+<p>协议有：HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP</p>
+<p><strong>表示层（Presentation Layer）：</strong></p>
+<p>数据的表示、安全、压缩。（在五层模型里面已经合并到了应用层）</p>
+<p>格式有，JPEG、ASCll、DECOIC、加密格式等</p>
+<p><strong>会话层（Session Layer）：</strong></p>
+<p>建立、管理、终止会话。（在五层模型里面已经合并到了应用层）</p>
+<p>对应主机进程，指本地主机与远程主机正在进行的会话</p>
+<p><strong>传输层 (Transport)：</strong></p>
+<p>定义传输数据的协议端口号，以及流控和差错校验。</p>
+<p>协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层</p>
+<p><strong>网络层 (Network)：</strong></p>
+<p>进行逻辑地址寻址，实现不同网络之间的路径选择。</p>
+<p>协议有：ICMP IGMP IP（IPV4 IPV6） ARP RARP</p>
+<p><strong>数据链路层 (Link)：</strong></p>
+<p>建立逻辑连接、进行硬件地址寻址、差错校验等功能。（由底层网络定义协议）</p>
+<p>将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正</p>
+<p><strong>物理层（Physical Layer）：</strong></p>
+<p>是计算机网络OSI模型中最低的一层</p>
+<p>物理层规定:为传输数据所需要的物理链路创建、维持、拆除</p>
+<p>而提供具有机械的，电子的，功能的和规范的特性</p>
+<p>简单的说，物理层确保原始的数据可在各种物理媒体上传输。局域网与广域网皆属第1、2层</p>
+<p>物理层是OSI的第一层，它虽然处于最底层，却是整个开放系统的基础</p>
+<p>物理层为设备之间的数据通信提供传输媒体及互连设备，为数据传输提供可靠的环境</p>
+<p>如果您想要用尽量少的词来记住这个第一层，那就是“信号和介质”</p>
+<p><strong>31、你常用的Nginx模块，用来做什么</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rewrite模块，实现重写功能</span><br><span class="line">access模块：来源控制</span><br><span class="line">ssl模块：安全加密</span><br><span class="line">ngx_http_gzip_module：网络传输压缩模块</span><br><span class="line">ngx_http_proxy_module 模块实现代理</span><br><span class="line">ngx_http_upstream_module模块实现定义后端服务器列表</span><br><span class="line">ngx_cache_purge实现缓存清除功能</span><br></pre></td></tr></table></figure>
+<p><strong>32、请列出你了解的web服务器负载架构</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Nginx</span><br><span class="line">Haproxy</span><br><span class="line">Keepalived</span><br><span class="line">LVS</span><br></pre></td></tr></table></figure>
+<p><strong>33、查看http的并发请求数与其TCP连接状态</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">netstat -n | awk &apos;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&apos;</span><br><span class="line"></span><br><span class="line">还有ulimit -n 查看linux系统打开最大的文件描述符，这里默认1024</span><br><span class="line">不修改这里web服务器修改再大也没用，若要用就修改很几个办法，这里说其中一个：</span><br><span class="line">修改/etc/security/limits.conf</span><br><span class="line">* soft nofile 10240</span><br><span class="line">* hard nofile 10240</span><br><span class="line">重启后生效</span><br></pre></td></tr></table></figure>
+<p><strong>34、用tcpdump嗅探80端口的访问看看谁最高</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F&quot;.&quot; &apos;&#123;print $1&quot;.&quot;$2&quot;.&quot;$3&quot;.&quot;$4&#125;&apos;| sort | uniq -c | sort -nr |head -20</span><br></pre></td></tr></table></figure>
+<p><strong>35、写一个脚本，实现判断192.168.1.0/24网络里，当前在线的IP有哪些，能ping通则认为在线</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for ip in `seq 1 255`</span><br><span class="line">do</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">ping -c 1 192.168.1.$ip &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">if [ $? -eq 0 ]; then</span><br><span class="line">echo 192.168.1.$ip UP</span><br><span class="line">else</span><br><span class="line">echo 192.168.1.$ip DOWN</span><br><span class="line">fi</span><br><span class="line">&#125;&amp;</span><br><span class="line">done</span><br><span class="line">wait</span><br></pre></td></tr></table></figure>
+<p><strong>36、已知 apache 服务的访问日志按天记录在服务器本地目录/app/logs 下，由于磁盘空间紧张现在要求只能保留最近 7 天的访问日志！请问如何解决？ 请给出解决办法或配置或处理命令</strong></p>
+<p>创建文件脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">for n in `seq 14`</span><br><span class="line">do        </span><br><span class="line"></span><br><span class="line">date -s &quot;11/0$n/14&quot;</span><br><span class="line">touch access_www_`(date +%F)`.log</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># pwd/application/logs</span><br><span class="line"># ll</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  1 00:00 access_www_2015-01-01.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  2 00:00 access_www_2015-01-02.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  3 00:00 access_www_2015-01-03.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  4 00:00 access_www_2015-01-04.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  5 00:00 access_www_2015-01-05.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  6 00:00 access_www_2015-01-06.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  7 00:00 access_www_2015-01-07.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  8 00:00 access_www_2015-01-08.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  9 00:00 access_www_2015-01-09.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 10 00:00 access_www_2015-01-10.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 11 00:00 access_www_2015-01-11.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 12 00:00 access_www_2015-01-12.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 13 00:00 access_www_2015-01-13.log</span><br><span class="line"></span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 14 00:00 access_www_2015-01-14.log</span><br><span class="line"># find /application/logs/ -type f -mtime +7 -name &quot;*.log&quot;|xargs rm –f  </span><br><span class="line"></span><br><span class="line">##也可以使用-exec rm -f &#123;&#125; \;进行删除</span><br><span class="line"># ll</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  7 00:00 access_www_2015-01-07.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  8 00:00 access_www_2015-01-08.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan  9 00:00 access_www_2015-01-09.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 10 00:00 access_www_2015-01-10.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 11 00:00 access_www_2015-01-11.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 12 00:00 access_www_2015-01-12.log</span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 13 00:00 access_www_2015-01-13.log</span><br><span class="line"></span><br><span class="line">-rw-r--r--. 1 root root 0 Jan 14 00:00 access_www_2015-01-14.log</span><br></pre></td></tr></table></figure>
+<p><strong>37、如何优化 Linux系统（可以不说太具体）？</strong></p>
+<ol>
+<li>不用root，添加普通用户，通过sudo授权管理</li>
+<li>更改默认的远程连接SSH服务端口及禁止root用户远程连接</li>
+<li>定时自动更新服务器时间</li>
+<li>配置国内yum源</li>
+<li>关闭selinux及iptables（iptables工作场景如果有外网IP一定要打开，高并发除外）</li>
+<li>调整文件描述符的数量</li>
+<li>精简开机启动服务（crond rsyslog network sshd）</li>
+<li>内核参数优化（/etc/sysctl.conf）</li>
+<li>更改字符集，支持中文，但建议还是用英文字符集，防止乱码</li>
+<li>锁定关键系统文件</li>
+<li>清空/etc/issue，去除系统及内核版本登录前的屏幕显示</li>
+</ol>
+<p><strong>38、请执行命令取出 linux 中 eth0 的 IP 地址(请用 cut，有能力者也可分别用 awk,sed 命令答)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cut方法1：</span><br><span class="line"># ifconfig eth0|sed -n &apos;2p&apos;|cut -d &quot;:&quot; -f2|cut -d &quot; &quot; -f1</span><br><span class="line">192.168.20.130</span><br><span class="line"></span><br><span class="line">awk方法2：</span><br><span class="line"># ifconfig eth0|awk &apos;NR==2&apos;|awk -F &quot;:&quot; &apos;&#123;print $2&#125;&apos;|awk &apos;&#123;print $1&#125;&apos;</span><br><span class="line">192.168.20.130</span><br><span class="line"></span><br><span class="line">awk多分隔符方法3：</span><br><span class="line"># ifconfig eth0|awk &apos;NR==2&apos;|awk -F &quot;[: ]+&quot; &apos;&#123;print $4&#125;&apos;</span><br><span class="line">192.168.20.130</span><br><span class="line"></span><br><span class="line">sed方法4：</span><br><span class="line"># ifconfig eth0|sed -n &apos;/inet addr/p&apos;|sed -r &apos;s#^.*ddr:(.*)Bc.*$#\1#g&apos;</span><br><span class="line">192.168.20.130</span><br></pre></td></tr></table></figure>
+<p><strong>39、请写出下面 linux SecureCRT 命令行快捷键命令的功能？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + a</span><br><span class="line">Ctrl + c</span><br><span class="line">Ctrl + d</span><br><span class="line">Ctrl + e</span><br><span class="line">Ctrl + l</span><br><span class="line">Ctrl + u</span><br><span class="line">Ctrl + k</span><br><span class="line">tab</span><br><span class="line">Ctrl+shift+c</span><br><span class="line">Ctrl+shift+v</span><br></pre></td></tr></table></figure>
+<p>解答：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + a —-&gt;光标移动到行首</span><br><span class="line">Ctrl + e —-&gt;光标移动到行尾</span><br><span class="line">Ctrl + c —-&gt;终止当前程序</span><br><span class="line">Ctrl + d —-&gt;如果光标前有字符则删除，没有则退出当前中断</span><br><span class="line">Ctrl + l —-&gt;清屏</span><br><span class="line">Ctrl + u —-&gt;剪切光标以前的字符</span><br><span class="line">Ctrl + k —-&gt;剪切光标以后的字符</span><br><span class="line">Ctrl + y —-&gt;复制u/k的内容</span><br><span class="line">Ctrl + r —-&gt;查找最近用过的命令</span><br><span class="line">tab —-&gt;命令或路径补全</span><br><span class="line">Ctrl+shift+c —-&gt;复制</span><br><span class="line">Ctrl+shift+v —-&gt;粘贴</span><br></pre></td></tr></table></figure>
+<p><strong>40、每天晚上 12 点，打包站点目录/var/www/html 备份到/data 目录下（最好每次备份按时间生成不同的备份包）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># cat a.sh </span><br><span class="line"></span><br><span class="line">#/bin/bash</span><br><span class="line">cd /var/www/ &amp;&amp; /bin/tar zcf /data/html-`date +%m-%d%H`.tar.gz html/</span><br><span class="line"># crontab –e</span><br><span class="line">00 00 * * * /bin/sh /root/a.sh</span><br></pre></td></tr></table></figure>
+<hr>
+<p>你想更深入了解学习Linux知识体系，你可以看一下我们花费了一个多月整理了上百小时的几百个知识点体系内容：</p>
+<p><a href="http://link.zhihu.com/?target=http%3A//www.magedu.com/74163.html%3Flinux_wenzhang_zhihu_jinke_tiaocaobibei40ti_33967414" target="_blank" rel="noopener">【超全整理】《Linux云计算从入门到精通》linux学习入门教程系列实战笔记</a></p>
+<p>编辑于 2018-02-24</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/18/计算机组成原理/" rel="next" title="计算机组成原理">
+                <i class="fa fa-chevron-left"></i> 计算机组成原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhangdianlei</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">98</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                  <a href="https://github.com/zhangdianlei" title="GitHub &rarr; https://github.com/zhangdianlei" rel="noopener" target="_blank">GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                  <a href="https://leetcode-cn.com/dianlei/" title="LeetCode &rarr; https://leetcode-cn.com/dianlei/" rel="noopener" target="_blank">LeetCode</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                  <a href="https://blog.csdn.net/zhdl11" title="CSDN &rarr; https://blog.csdn.net/zhdl11" rel="noopener" target="_blank">CSDN</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                  <a href="mailto:dianlei.zhang@gmail.com" title="E-Mail &rarr; mailto:dianlei.zhang@gmail.com" rel="noopener" target="_blank">E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ir.sdu.edu.cn/" title="http://ir.sdu.edu.cn/" rel="noopener" target="_blank">SDU IRLab</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zangcq.com/" title="http://www.zangcq.com/" rel="noopener" target="_blank">Chuanqiz's blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangdianlei</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://zhangdianlei.disqus.com/count.js" async></script>
+  
+
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://zhangdianlei.github.io/2019/01/21/运维基础知识/";
+        this.page.identifier = "2019/01/21/运维基础知识/";
+        this.page.title = '运维基础知识';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zhangdianlei.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('复制成功');
+          else $(this).text('复制失败');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function () {
+          $b.text('复制');
+        }, 300);
+      }).append(e);
+    })
+  </script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+</body>
+</html>
